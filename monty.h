@@ -42,4 +42,35 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+/**
+ * struct argument_s - hold variables
+ * @stream: file that connects to the stream
+ * @line: the line of text to read from
+ * @instruction: a valid instruction from a line
+ * @head: head/top of the stack (doubly linked lists of struct stack_s)
+ * @stack: used to determine whether to use stack/queue data structure
+ *
+ */
+
+typedef struct argument_s
+{
+	FILE *stream;
+	char *line;
+	instruction_t *instruction;
+	stack_t *head;
+} arg_t;
+
+
+extern arg_t *arguments;
+
+void initialize_args();
+void malloc_fail(void);
+void free_args(void);
+void free_head(void);
+void get_stream(char *fileName);
+void get_stream_fail(char *fileName);
+void free_stack(stack_t *head);
+
+
 #endif
