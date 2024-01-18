@@ -26,7 +26,9 @@ int main(int argc, char **argv)
 
 	while (getline(&arguments->line, &n, arguments->stream) != -1)
 	{
-		printf("%s", arguments->line);
+		arguments->line_number += 1;
+		tokenize();
+		get_instruction();
 	}
 
 	return (0);
