@@ -52,6 +52,8 @@ typedef struct instruction_s
  * @line_number: for tracking current line number
  * @tokens: used to store tokens from line
  * @n_tokens; number of tokens created from line
+ * @stack_length: tracks the number of nodes in the stack
+ * @stack: used to determine whether to use stack/queue data structure
  *
  */
 
@@ -64,14 +66,16 @@ typedef struct argument_s
 	unsigned int line_number;
 	char **tokens;
 	int n_tokens;
+	int stack_length;
+	int stack;
 } arg_t;
 
 extern arg_t *arguments;
 
 void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
@@ -100,5 +104,9 @@ void invalid_instruction(void);
 void close_stream(void);
 void free_tokens(void);
 void run_instruction(void);
+int is_number(char *str);
+void delete_stack_node(void);
+void free_all(void);
+
 
 #endif
