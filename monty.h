@@ -49,7 +49,9 @@ typedef struct instruction_s
  * @line: the line of text to read from
  * @instruction: a valid instruction from a line
  * @head: head/top of the stack (doubly linked lists of struct stack_s)
- * @stack: used to determine whether to use stack/queue data structure
+ * @line_number: for tracking current line number
+ * @tokens: used to store tokens from line
+ * @n_tokens; number of tokens created from line
  *
  */
 
@@ -59,8 +61,10 @@ typedef struct argument_s
 	char *line;
 	instruction_t *instruction;
 	stack_t *head;
+	unsigned int line_number;
+	char **tokens;
+	int n_tokens;
 } arg_t;
-
 
 extern arg_t *arguments;
 
@@ -71,6 +75,6 @@ void free_head(void);
 void get_stream(char *fileName);
 void get_stream_fail(char *fileName);
 void free_stack(stack_t *head);
-
+void tokenize(void);
 
 #endif

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 /**
  * get_stream_fail - Handles the error when reading a file fails.
@@ -14,6 +15,7 @@ void get_stream_fail(char *fileName)
 	free_args();
 	exit(EXIT_FAILURE);
 }
+
 
 
 /**
