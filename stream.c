@@ -15,3 +15,25 @@ void get_stream_fail(char *fileName)
 	free_args();
 	exit(EXIT_FAILURE);
 }
+
+
+/**
+ * get_stream - gets the stream for reading from the specified file.
+ * @fileName: Name of the file to open and set as the stream.
+ */
+
+void get_stream(char *fileName)
+{
+	int fd;
+
+	fd = open(fileName, O_RDONLY);
+	if (fd == -1)
+		get_stream_fail(fileName);
+
+	arguments->stream = fdopen(fd, "r");
+	if (arguments->stream == NULL)
+	{
+		close(fd);
+		get_stream_fail(fileName);
+	}
+}

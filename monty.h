@@ -90,6 +90,9 @@ void rotr(stack_t **stack, unsigned int line_number);
 void stack(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
 
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+FILE *fdopen(int fd, const char *mode);
+
 void initialize_args();
 void malloc_fail(void);
 void free_args(void);
